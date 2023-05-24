@@ -4,43 +4,100 @@ public static class ArrayProblems
 {
     public static bool AreArraysEqual<T>(T[] xs, T[] ys)
     {
-        throw new NotImplementedException();
+        return Object.Equals(xs, ys);
     }
 
     public static void Swap<T>(T[] xs, int a, int b)
     {
-        xs[a] = xs[b];
-        xs[b] = xs[a];
+        if (xs.GetLength(0) < 2)
+        {
+            throw new IndexOutOfRangeException();
+        }
+        else
+        {
+            T tempa = xs[a];
+            xs[a] = xs[b];
+            xs[b] = tempa;
+        }
     }
 
     public static T FirstElement<T>(T[] xs)
     {
-        throw new NotImplementedException();
+        if (xs.GetLength(0) < 1)
+        {
+            throw new Exception();
+        }
+        else
+        {
+            return xs[0];
+        }
     }
 
     public static T LastElement<T>(T[] xs)
     {
-        throw new NotImplementedException();
+        if (xs.GetLength(0) < 1)
+        {
+            throw new Exception();
+        }
+        else
+        {
+            return xs[xs.GetLength(0) - 1];
+        }
     }
 
     public static T MiddleElement<T>(T[] xs)
     {
-        throw new NotImplementedException();
+        if (xs.GetLength(0) < 1)
+        {
+            throw new Exception();
+        }
+        else
+        {
+            return xs[xs.GetLength(0)/2];
+        }
     }
 
     public static void Reverse<T>(T[] xs)
     {
-        throw new NotImplementedException();
+        T[] tempx = new T[xs.GetLength(0)];
+        Array.Copy(xs, tempx, xs.GetLength(0));
+
+        for (int i = 0; i < xs.GetLength(0); i++)
+        {
+            xs[i] = tempx[xs.GetLength(0) - i - 1];
+        }
     }
 
     public static int CountElement<T>(T[] xs, T element)
-    { 
-        throw new NotImplementedException();
+    {
+        int counter = 0;
+        foreach (T i in xs)
+        {
+            if(Object.Equals(element,i))
+            {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     public static string ToCommaDelimitedString<T>(T[] xs)
     {
-        throw new NotImplementedException();
+        if (xs.GetLength(0) < 1)
+        {
+            return "";
+        }
+        else
+        {
+            string str = "";
+            foreach (T i in xs)
+            {
+                str = $"{str},{i}";
+            }
+            str = str.Substring(1);
+
+            return str;
+        }
     }
 
     // Bonus problems
