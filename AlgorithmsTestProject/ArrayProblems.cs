@@ -25,7 +25,7 @@ public static class ArrayProblems
     {
         if (xs.GetLength(0) < 1)
         {
-            throw new Exception();
+            throw new IndexOutOfRangeException();
         }
         else
         {
@@ -37,7 +37,7 @@ public static class ArrayProblems
     {
         if (xs.GetLength(0) < 1)
         {
-            throw new Exception();
+            throw new IndexOutOfRangeException();
         }
         else
         {
@@ -49,7 +49,7 @@ public static class ArrayProblems
     {
         if (xs.GetLength(0) < 1)
         {
-            throw new Exception();
+            throw new IndexOutOfRangeException();
         }
         else
         {
