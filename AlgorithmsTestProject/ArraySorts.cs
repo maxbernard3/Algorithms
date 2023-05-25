@@ -4,7 +4,19 @@
     {
         public static void MySort1(int[] array)
         {
-            throw new NotImplementedException();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                for(int j = 0; j < array.Length; j++)
+                {
+                    if (array[i] < array[j])
+                    {
+                        int temp = array[j];
+                        array[j] = array[i];
+                        array[i] = temp;
+                    }
+                }
+            }
         }
 
         public static void MySort2(int[] array)
