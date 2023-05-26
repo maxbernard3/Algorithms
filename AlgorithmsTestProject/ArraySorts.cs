@@ -78,7 +78,45 @@
 
         public static void QuickSort(int[] array)
         {
-            throw new NotImplementedException();
+            int max = array.Length - 1;
+            int min = 0;
+
+            array = quicksort(array, min, max);
+        }
+
+        private static int[] quicksort(int[] array, int min, int max)
+        {
+            if (min <= max)
+            {
+                int pi = partition(array, min, max);
+
+                quicksort(array, min, pi - 1);
+                quicksort(array, pi + 1, max);
+            }
+
+            return array;
+        }
+
+        private static int partition(int[] array, int min, int max)
+        {
+            int pivot = array[max];
+            int i = min - 1;
+
+            for (int j = min; j < max; j++)
+            {
+                if(array[j] < pivot)
+                {
+                    i++;
+                    int tmp2 = array[i];
+                    array[i] = array[j];
+                    array[j] = tmp2;
+                }
+            }
+            i++;
+            int tmp = array[i];
+            array[i] = array[max];
+            array[max] = tmp;
+            return i;
         }
 
         public static void BlockSort(int[] array)
@@ -102,11 +140,46 @@
 
         public static void GnomeSort(int[] array)
         {
-            throw new NotImplementedException();
+            foreach (int i in array)
+            {
+                int pos = 0;
+                while (pos < array.Length)
+                {
+                    if (pos == 0 || array[pos] >= array[pos- 1])
+                    {
+                        pos += 1;
+                    }
+                    else
+                    {
+                        int tmp = array[pos];
+                        array[pos] = array[pos - 1];
+                        array[pos - 1] = tmp;
+                    }
+                }
+            }
         }
 
         public static void SelectionSort(int[] array)
         {
+            int i, j;
+
+            for(i = 0; i < array.Length - 1; i++)
+            {
+                int jMin = i;
+                for (j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] < array[jMin])
+                    {
+                        jMin = j;
+                    }
+                }
+                if (jMin != i)
+                {
+                    int tmp = array[i];
+                    array[i] = array[jMin];
+                    array[jMin] = tmp;
+                }
+            }
         }
     }
 }
