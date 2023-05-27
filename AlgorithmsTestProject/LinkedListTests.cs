@@ -68,8 +68,17 @@ namespace AlgorithmsTestProject
             Assert.AreEqual(2, tmp);
         }
 
+        [Test]
         public static void TestSetAt()
         {
+            var list = CreateTestData();
+            list.SetAt(2, 7);
+
+            var arr = new int[4] { 1, 2, 7, 3 };
+
+            OutputList(list);
+
+            Assert.IsTrue(CompareListWithArray(list, arr));
         }
 
         public static void TestSwap()

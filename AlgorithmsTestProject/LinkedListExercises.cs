@@ -42,12 +42,22 @@ namespace AlgorithmsTestProject
 
         public static void SetAt<T>(this IList<T> self, int index, T element)
         {
-            throw new NotImplementedException();
+            var i = 0;
+            var iter = self.GetIterator();
+            while (iter.HasValue() && i < index)
+            {
+                iter = iter.GetNext();
+                i += 1;
+            }
+
+            self.Insert(iter, element);
         }
 
-        public static void Swap<T>(this IList<T> self, IIterator<T> a, IIterator<T> b)
+        public static void Swap<T>(this IList<T> self, int a, int b)
         {
-            throw new NotImplementedException();
+            var tmp = self.GetAt(a);
+            self.SetAt(a, self.GetAt(b));
+
         }
 
         public static IList<T> Reverse<T>()
